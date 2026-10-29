@@ -1,0 +1,32 @@
+{
+  "lockfileVersion": 2,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "renaming",
+      "dependencies": {
+        "commander": "^15.0.0",
+        "exiftool-vendored": "^39.1.0",
+      },
+    },
+  },
+  "packages": {
+    "@photostructure/tz-lookup": ["@photostructure/tz-lookup@11.7.0", "", {}, "sha512-QbKHXvleluMIlAHf2JiQTJNU5rLQBeQhLobyRqgXZ6NNGKqNikaRkjYviJ4nMU7Y75QE7bBYM8xjiFGjAukyhw=="],
+
+    "@types/luxon": ["@types/luxon@3.7.6", "", {}, "sha512-6KSjliQAXK8ZLgFQO4B7iE4Rpf/B3rItzCFuXezBY/XIAGxOdLd7vRNK9/StRPwiS/yJsVbB7HKpW46B8tcEuQ=="],
+
+    "batch-cluster": ["batch-cluster@19.5.0", "", {}, "sha512-iI7wS1ljoQGV2+y9LUx8VBFsfMX9VLT/aeN4P07NZYWcD3dC6SZMMJLJlmoibJ4zsnpLODXVCfndTJJNTes5PA=="],
+
+    "commander": ["commander@15.0.0", "", {}, "sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg=="],
+
+    "exiftool-vendored": ["exiftool-vendored@39.1.0", "", { "dependencies": { "@photostructure/tz-lookup": "^11.7.0", "@types/luxon": "^3.7.6", "batch-cluster": "^19.5.0", "he": "^2.0.0", "luxon": "^3.7.2" }, "optionalDependencies": { "exiftool-vendored.exe": "13.60.0", "exiftool-vendored.pl": "13.60.0" } }, "sha512-qjIZI+W/77TMtL/nCp4WGR2UZKd5R/Pl1nNbRCGf6qxRcWICwWTDYVEpxW/hbTjI2FRPB/FRF8E4XxHaoC1SsQ=="],
+
+    "exiftool-vendored.exe": ["exiftool-vendored.exe@13.60.0", "", { "os": "win32" }, "sha512-DcpybFsR7Dp3FMrPDaq3iy+dcFrPTYENJeazy19TQoefpp4MQml5YXMAx2TpYRFuYoFLcXi9dupyufdrj6sS+A=="],
+
+    "exiftool-vendored.pl": ["exiftool-vendored.pl@13.60.0", "", { "os": "!win32", "bin": { "exiftool": "bin/exiftool" } }, "sha512-RPXLoynEgak2D9zclE4oCpXII4S3EZlHXJIFHvjktByDgM7+ievXBfqtEWw6dK0xbk/L+cLVTWKoUBhOH+P/1A=="],
+
+    "he": ["he@2.0.0", "", { "bin": { "he": "bin/he.mjs" } }, "sha512-0jE+JPv08nhXWmI1dULybzqNt34RbkH6Ul6V4cmDONpjYx1SfyObKF38FJLaJ1K7WWD93LWL9lewzk4E1Ria4A=="],
+
+    "luxon": ["luxon@3.7.2", "", {}, "sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew=="],
+  }
+}
