@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:win": "bun build --compile --target=bun-windows-x64 ./index.js --outfile dist/unixtodate-windows.exe",
     "build:linux": "bun build --compile --target=bun-linux-x64 ./index.js --outfile dist/unixtodate-linux",
-    "build": "bun run build:win && build:linux"
+    "build": "bun run build:win && bun run build:linux"
   },
   "keywords": [],
   "type": "module",
