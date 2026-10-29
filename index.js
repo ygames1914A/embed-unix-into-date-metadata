@@ -36,12 +36,12 @@ async function unixParser() {
 
       if (!/^\d+$/.test(elemetUnix)) {
         console.log(`${element} doesn't have a unix timestamp as it's name`)
-        break;
+        continue;
       }
 
       if (elementFileLength !== 13 && elementFileLength !== 10) {
         console.log(`${element} name length not 13 or 10`)
-        break;
+        continue;
       }
 
       
