@@ -12,3 +12,10 @@ jobs:
       # run any `bun` or `bunx` command
       - run: bun install
       - run: bun run build
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            dist/unixtodate-linux
+            dist/unixtodate-windows.exe
+          generate_release_notes: true

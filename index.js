@@ -4,15 +4,15 @@ import { program } from "commander";
 
 // const directory = "/mnt/new/nepic";
 
-program.argument("pictures path")
+program.argument("pictures path");
 program.parse();
 // console.log(program.args)
-const directory = program.args
+const directory = program.args;
 
 async function getFiles() {
   try {
     const data = await readdir(directory[0]);
-    console.log(data)
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -22,7 +22,7 @@ async function getFiles() {
 async function unixParser() {
   try {
     const files = await getFiles();
-    console.log(files)
+    // console.log(files);
     const date = new Date(parseInt(files[0]) * 1000);
     // console.log(files[0].split('.')[0].length)
     // console.log(files[0])
@@ -30,14 +30,23 @@ async function unixParser() {
 
     for (let i = 0; i < files.length; i++) {
       const element = files[i];
-      const elementFileLength = element.split('.')[0].length
-      const multiPlier = elementFileLength === 13 ? 1 :1000
+      const elemetUnix = element.split(".")[0];
+      const elementFileLength = elemetUnix.length;
+      const multiPlier = elementFileLength === 13 ? 1 : 1000;
 
-      if (elementFileLength !== 13 && elementFileLength !== 10) {
+      if (!/^\d+$/.test(elemetUnix)) {
+        console.log(`${element} doesn't have a unix timestamp as it's name`)
         break;
       }
 
-      const date = new Date(parseInt(element) * multiPlier );
+      if (elementFileLength !== 13 && elementFileLength !== 10) {
+        console.log(`${element} name length not 13 or 10`)
+        break;
+      }
+
+      
+
+      const date = new Date(parseInt(element) * multiPlier);
 
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -47,22 +56,20 @@ async function unixParser() {
       const seconds = String(date.getSeconds()).padStart(2, "0");
 
       const exifDateStr = `${year}:${month}:${day} ${hours}:${minutes}:${seconds}`;
-    //   console.log(exifDateStr);
+      //   console.log(exifDateStr);
 
       await exiftool.write(directory + "/" + element, {
         DateTimeOriginal: exifDateStr,
         CreateDate: exifDateStr,
       });
 
-    console.log(element);
-
+      console.log(element);
     }
     await exiftool.end();
     console.log("success");
   } catch (error) {
     console.log(error);
   }
-
 }
 
 unixParser();
