@@ -2,7 +2,7 @@ import { readdir } from "node:fs/promises";
 import { exiftool } from "exiftool-vendored";
 import { program } from "commander";
 
-// const directory = "/mnt/new/nepic";
+//  const directory = "/mnt/new/nepic";
 
 program.argument("pictures path");
 program.parse();
@@ -28,11 +28,16 @@ async function unixParser() {
     // console.log(files[0])
     // console.log(exifDateStr);
 
+
+    // const element = "1747306525582.jpg"
+    // console.log(element.split('.')[0].split(' ')[0].split('_')[0].split('(')[0])
+
     for (let i = 0; i < files.length; i++) {
       const element = files[i];
-      const elemetUnix = element.split(".")[0];
+      const elemetUnix = element.split('.')[0].split(' ')[0].split('_')[0].split('(')[0];
       const elementFileLength = elemetUnix.length;
       const multiPlier = elementFileLength === 13 ? 1 : 1000;
+      console.log(elemetUnix)
 
       if (!/^\d+$/.test(elemetUnix)) {
         console.log(`${element} doesn't have a unix timestamp as it's name`)
@@ -44,9 +49,7 @@ async function unixParser() {
         continue;
       }
 
-      
-
-      const date = new Date(parseInt(element) * multiPlier);
+      const date = new Date(parseInt(elemetUnix) * multiPlier);
 
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, "0");
