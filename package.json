@@ -4,7 +4,10 @@
   "description": "Converts unixtimestamps into created date metadata in photos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:win": "bun build --compile --target=bun-windows-x64 ./src/index.ts --outfile dist/unix-windows.exe",
+    "build:linux": "bun build --compile --target=bun-linux-x64 ./src/index.ts --outfile dist/app-linux",
+    "build": "bun run build:win && build:linux"
   },
   "keywords": [],
   "type": "module",
@@ -16,5 +19,6 @@
   "pkg": {
     "targets": ["node26-linux-x64"],
     "outputPath": "dist"
-  }
+  },
+  "packageManager": "bun@1.4.4"
 }
