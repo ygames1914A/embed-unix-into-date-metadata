@@ -15,12 +15,23 @@ when you organize your photos for something like immich you will see that their 
 
 Run the Linux executable with the path to your photos directory:
 
+#### prerequisites
+##### Fedora
+```bash
+sudo dnf install perl-Image-ExifTool
+```
+##### Arch
+```bash
+sudo pacman -S perl-image-exiftool
+```
+
+#### Run it
 ```bash
 chmod +x unixtodate-linux
 ./unixtodate-linux /path/to/photos
 ```
 
-### Windows
+### Windows (Not tested)
 
 Open Command Prompt or PowerShell and run:
 
