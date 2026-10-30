@@ -1,6 +1,6 @@
 {
   "name": "renaming",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Converts unixtimestamps into created date metadata in photos",
   "main": "index.js",
   "scripts": {
