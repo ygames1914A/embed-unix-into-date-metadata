@@ -26,17 +26,34 @@ sudo pacman -S perl-image-exiftool
 ```
 
 #### Run it
+
+##### prior to v1.0.7
 ```bash
 chmod +x unixtodate-linux
 ./unixtodate-linux /path/to/photos
+```
+
+##### Since v1.0.7 it now supports multiple sources folders
+
+```bash
+chmod +x unixtodate-linux
+./unixtodate-linux --src /path/to/photos /path/to/photos
 ```
 
 ### Windows (finally working)
 
 Open Command Prompt or PowerShell and run:
 
+##### prior to v1.0.7
+
 ```powershell
 .\unixtodate-windows.exe "C:\path\to\photos"
+```
+
+##### Since v1.0.7 it now supports multiple sources folders
+
+```powershell
+.\unixtodate-windows.exe --src "C:\path\to\photos" "C:\path\to\photos"
 ```
 
 Replace the example directory with the actual path to your photos.
