@@ -1,8 +1,10 @@
 name: my-workflow
-on: push
+on:
+  push:
+    tags:
+      - "v*"
 jobs:
-  my-job:
-    name: my-job
+  linux-job:
     runs-on: ubuntu-latest
     steps:
       # ...
@@ -10,12 +12,51 @@ jobs:
       - uses: oven-sh/setup-bun@v2
 
       # run any `bun` or `bunx` command
-      - run: bun install
-      - run: bun run build
+      - run: bun install --frozen-lockfile --production
+      - run: bun run build:linux
+      - run: cp -r node_modules ./dist/
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: 'zip'
+          filename: 'unixtodate-linux.zip'
+          path: dist
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v3
         with:
           files: |
-            dist/unixtodate-linux
-            dist/unixtodate-windows.exe
+            unixtodate-linux.zip
           generate_release_notes: true
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+
+      - name: installing dependencies
+        run: bun install --frozen-lockfile --production
+
+      - name: building the application
+        run: bun run build:win
+
+      - name: adding node modules in the dist
+        shell: pwsh
+        run: Copy-Item -Path ".\node_modules" -Destination ".\dist\" -Recurse
+
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: 'zip'
+          filename: 'unixtodate-windows.zip'
+          path: dist
+          
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            unixtodate-windows.zip
+          generate_release_notes: true
+        
