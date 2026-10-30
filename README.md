@@ -31,7 +31,7 @@ chmod +x unixtodate-linux
 ./unixtodate-linux /path/to/photos
 ```
 
-### Windows (NOT WORKING) you can try wsl (no guarantees)
+### Windows (finally working)
 
 Open Command Prompt or PowerShell and run:
 
