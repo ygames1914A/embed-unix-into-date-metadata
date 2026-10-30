@@ -12,6 +12,7 @@
   "keywords": [],
   "type": "module",
   "dependencies": {
+    "command-line-args": "^6.0.2",
     "commander": "^15.0.0",
     "exiftool-vendored": "^39.1.0"
   },
