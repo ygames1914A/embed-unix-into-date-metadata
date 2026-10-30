@@ -1,10 +1,9 @@
 import { readdir } from "node:fs/promises";
-import { ExifTool } from "exiftool-vendored";
 import { exiftool } from "exiftool-vendored";
 import { program } from "commander";
 import {setTimeout} from "node:timers/promises"
-import os from "node:os";
 import path from "node:path";
+import process from "node:process";
 
 //  const directory = "/mnt/new/nepic";
 
@@ -23,7 +22,7 @@ const exifExistanceCheck = async () => {
   await setTimeout(1000)
 
   if (!version) {
-    return null
+    process.exit(1)
   }
   return version
 }
@@ -43,8 +42,6 @@ async function unixParser() {
 
       const versionCheckValue = await exifExistanceCheck()
       console.log(versionCheckValue)
-
-      if (!versionCheckValue) return console.log("exif cannot be detected")
 
         const files = await getFiles();
         // console.log(files);

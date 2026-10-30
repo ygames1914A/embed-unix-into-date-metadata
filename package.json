@@ -1,6 +1,6 @@
 {
   "name": "renaming",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Converts unixtimestamps into created date metadata in photos",
   "main": "index.js",
   "scripts": {
@@ -16,9 +16,5 @@
     "exiftool-vendored": "^39.1.0"
   },
   "bin": "index.js",
-  "pkg": {
-    "targets": ["node26-linux-x64"],
-    "outputPath": "dist"
-  },
   "packageManager": "bun@1.4.4"
 }
